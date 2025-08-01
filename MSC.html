@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>MSC</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        h1 span {
+            text-decoration: underline;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Paragraph Styles */
+        .project p,
+        .header p,
+        footer p {
+            max-width: 80%;
+            margin: 0 auto; /* Align to the center */
+            text-align: justify; /* Justify text content */
+        }
+
+        /* Project Section */
+        .project {
+            margin-bottom: 40px;
+        }
+
+        .project h2 {
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .project .tags {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .project .tags span {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+
+        /* Image Section */
+        .image-section {
+            text-align: center;
+            margin: 20px auto 40px;
+            max-width: 80%; /* Align with paragraphs */
+        }
+
+        .image-section img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: block; /* Ensure image is treated as a block element */
+            margin: 0 auto; /* Center the image */
+        }
+
+        .image-section .caption {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        footer a {
+            font-size: 0.9rem;
+        }
+
+        .key-term {
+            background-color: #f0f8ff; /* Light blue background */
+            color: #2c3e50; /* Dark text color */
+            font-weight: bold; /* Bold text */
+            padding: 0 4px; /* Add slight padding */
+            border-radius: 4px; /* Rounded edges */
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Align vertically */
+            margin: 20px auto;
+            flex-direction: column; /* Stack video and caption vertically */
+        }
+
+        iframe {
+            width: 80%;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 80%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style subtitles using the ::cue pseudo-element */
+        video::cue {
+            font-size: 14px; /* Set the font size for subtitles */
+            color: #333; /* Change subtitle text color */
+            background: rgba(
+                    255,
+                    255,
+                    255,
+                    0.7
+            ); /* Adjust subtitle background */
+            padding: 2px 4px; /* Add some padding to subtitles */
+            border-radius: 4px; /* Optional: Make subtitle background rounded */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <h1>
+            MSC: A Marine Wildlife Video Dataset with Grounded
+            Segmentation and Clip-Level Captioning
+        </h1>
+        <p style="text-align: center">
+            <a href="#">Quang-Trung Truong</a><sup>1</sup>,
+            <a href="#">Wong Yuk Kwan</a><sup>1</sup>,
+            <a href="#">Vo Hoang Kim Tuyen Dang</a><sup>2</sup>,
+            <a href="#">Rinaldi Gotama</a><sup>3</sup>,
+            <a href="#">Duc Thanh Nguyen</a><sup>4</sup>,
+            <a href="#">Sai-Kit Yeung</a><sup>1</sup>
+        </p>
+        <p style="text-align: center">
+            <sup>1</sup>HKUST, <sup>2</sup>HCMUS, <sup>3</sup>Indo Ocean Project, <sup>4</sup>Deakin University
+        </p>
+        <span class="key-term" style="
+                    background: linear-gradient(to right, #6a11cb, #2575fc);
+                    color: #fff;
+                    font-weight: bold;
+                    padding: 5px 10px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    display: inline-block;">
+                    ACM International Conference on Multimedia (ACMMM Datasets) 2025
+                </span>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="project">
+        <h2>Abstract</h2>
+        <p>
+            Marine videos present significant challenges for video understanding due to the dynamics of marine objects
+            and the surrounding environment, camera motion, and the complexity of underwater scenes. Existing video
+            captioning datasets, typically focused on generic or human-centric domains, often fail to generalize to the
+            complexities of the marine environment and gain insights about marine life. To address these limitations, we
+            propose a two-stage marine object-oriented video captioning pipeline. We introduce a comprehensive video
+            understanding benchmark that leverages the triplets of video, text, and segmentation masks to facilitate
+            visual grounding and captioning, leading to improved marine video understanding and analysis, and marine
+            video generation. Additionally, we highlight the effectiveness of video splitting in order to detect salient
+            object transitions in scene changes, which significantly enrich the semantics of captioning content.
+        </p>
+    </div>
+
+    <div class="project">
+        <h2>Dataset</h2>
+        <p style="text-align: center">
+            We sampled 10 videos from the MSC dataset. Readers can download this subset of the dataset via this
+            <a
+                    href="https://hkust-vgd.nas.ust.hk:5001/sharing/fzBY0xgmB"
+            >link</a
+            >.
+        </p>
+    </div>
+
+    <div class="project">
+        <h2>Data Pipeline and Statistics</h2>
+        <div class="image-section">
+            <img src="MSC_files/MSC_Annotation.png" alt="MSC Annotation Generation"/>
+            <p class="caption">MSC Annotation Generation</p>
+        </div>
+        <div class="image-section">
+            <img src="MSC_files/MSC_Statistics.png" alt="MSC Overview of the MSC dataset"/>
+            <p class="caption">Overview of the MSC dataset</p>
+        </div>
+        <div class="image-section">
+            <img src="MSC_files/MSC_Distribution.png" alt="MSC Distributions"/>
+            <p class="caption">(a) The number of instances per category. (b) The average area of category. (c)
+                Distribution of the number
+                of instances by regions in the MSC dataset</p>
+        </div>
+    </div>
+
+
+    <div class="project">
+        <h2>Clip-level Captioning</h2>
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide">
+                    <video controls>
+                        <source src="videos/MVK2_TelAviv1_Oct2022_0050.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="videos/MVK2_TelAviv1_Oct2022_0034.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="videos/MVK2_TelAviv1_Oct2022_0027.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video controls>
+                        <source src="videos/MVK2_HongKong7_Aug2023_0010.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-button" id="prev">Previous</button>
+                <button class="nav-button" id="next">Next</button>
+            </div>
+        </div>
+
+        <!-- Add this CSS to your existing <style> section -->
+        <style>
+            .slider-container {
+                width: 80%;
+                margin: 20px auto;
+                overflow: hidden;
+                position: relative;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                background: #fff;
+            }
+
+            .slides {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .slide {
+                min-width: 100%;
+                box-sizing: border-box;
+            }
+
+            video {
+                width: 100%;
+                height: auto;
+                border: none;
+            }
+
+            .navigation {
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                transform: translateY(-50%);
+            }
+
+            .nav-button {
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+
+            .nav-button:hover {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+
+        <!-- Add this JavaScript before the closing </body> tag -->
+        <script>
+            const slides = document.querySelector('.slides');
+            const slide = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev');
+            const nextButton = document.getElementById('next');
+            const subtitleContainer = document.createElement('div'); // Create a container for subtitles
+            subtitleContainer.style.textAlign = 'center';
+            subtitleContainer.style.marginTop = '10px';
+            subtitleContainer.style.fontSize = '1rem';
+            subtitleContainer.style.color = '#333';
+            slides.parentElement.appendChild(subtitleContainer); // Append it below the slider
+
+            const subtitles = [
+                [
+                    {
+                        start: 0,
+                        end: 2,
+                        text: "A group of red reef fish with forked tails swim actively around a coral reef, mainly dominated by a yellow coloured coral. The vibrant reef teems with life, while the clear blue water reveals additional schools of smaller fish in the distance."
+                    },
+                    {
+                        start: 2,
+                        end: 6,
+                        text: "Colorful fish swim around a large reef, dominated by a yellow coral. The fish display quick movements, and a group of red fish with forked tails can be swimming towards the bottom of the reef. The sandy sea floor is visible beneath the coral, scattered with small rocks."
+                    },
+                    {
+                        start: 6,
+                        end: 10,
+                        text: "A red grouper with yellow fin tips swims calmly below a coral reef. The reef is dominated by a yellow coral and tiny bright blue fish can be seen swimming slowly above the grouper. The reef is upon a sandy seafloor with scattered rocks and pieces of coral."
+                    },
+                    {
+                        start: 10,
+                        end: 14,
+                        text: "A red grouper can be seen hiding under a reef structure. As the camera moves a sandy seafloor dotted with rocks and large patches of coral structures is revealed, the camera focuses on a large coral structure. Bright orange fish can be seen swimming close by to the reef."
+                    },
+                    {
+                        start: 14,
+                        end: 18,
+                        text: "Two tall coral reef structures are displayed, both with various coral species upon them and various small reef fish swimming around them. The sea floor is sandy and rocky with scattered coral debris. The sunlight from the surface creates bright blue coloured waters."
+                    },
+                    {
+                        start: 18,
+                        end: 22,
+                        text: "A vibrant coral reef teems with small, colorful fish swimming around the coral structures. As the camera moves away from the reef the sea floor is revealed, consisting of sand and patches of rocks and coral debris. Colourful fish swim around in the bright blue waters."
+                    },
+                    {
+                        start: 22,
+                        end: 25,
+                        text: "A bright blue sea is filled with brightly coloured fish swimming actively in its waters. The seafloor consists of light sand and patches of rocks and coral debris, the clear blue water stretches into the distance."
+                    }
+                ],
+                [
+                    {
+                        start: 0,
+                        end: 1,
+                        text: "A large, tall, vibrant coral reef teeming with life. A few small brightly coloured fish swim around the reef. There are various coral formations, including branching and brain corals, the structure is on a sandy seabed. There are two divers swimming behind the coral structure, one with yellow fins. The sandy sea floor provides a clear contrast to the colorful reef, with a serene, blue background. The video shows a vibrant coral reef with a diverse array of branching and brain corals, a few small brightly coloured fish swim around the reef. In the background, two human divers can be seen exploring, one with bright yellow fins."
+                    },
+                    {
+                        start: 1,
+                        end: 8,
+                        text: "The video features a vibrant coral reef teeming with life. Various coral formations are visible, from branching structures to rounded mounds. Small fish dart around the reef, likely feeding or searching for shelter. The sandy seabed can be seen as well as the clear blue water in the background. The video showcases a vibrant coral reef with a diverse array of fish and corals. The background features a sandy sea floor and a coral reef in the foreground. The behavior of the fish appears to be active, as they are swimming around the reef. The sandy sea floor is visible in the background."
+                    },
+                    {
+                        start: 8,
+                        end: 12,
+                        text: "Vibrant coral reefs dominate, teeming with life. Various fish species dart among the coral formations. A diver swims around the coral reef structure in the background. The video shows a vibrant coral reef with a a few colourful fish swimming around. The reef is covered in various types of coral. In the background, a human diver can be seen exploring the reef. The sea floor is visible in the distance."
+                    },
+                    {
+                        start: 12,
+                        end: 18,
+                        text: "The images depict a vibrant coral reef teeming with life. The focal point is a large, textured reef formation, with various coral species of diverse colors. Numerous small, colorful fish swim around the reef. The background is a deep blue sea filled with colourful small reef fish. Trails of bubbles can be seen rising to the surface from divers. A bright coral reef is shown, covered in colourful corals. A few small fish swim around the reef. In the dark blue sea beside the reef, there are many brightly coloured reef fish swimming around. Trails of bubbles can be seen rising to the surface from nearby divers exploring."
+                    },
+                    {
+                        start: 18,
+                        end: 23,
+                        text: "The video presents a vibrant coral reef teeming with life. Various fish of different sizes and colors swim around the coral, likely feeding or exploring the reef environment. In the background, a diver swims away from the reef, a trail of bubbles from their regulator. The video showcases a vibrant coral reef teeming with life. The colors are vibrant and their are various fish of different bright colours swimming around the reef. The reef is covered in various types of coral and sponges. The background is a deep blue and the sun is shining brightly. A diver with a trail of bubbles swims past in the background away from the reef."
+                    },
+                    {
+                        start: 23,
+                        end: 30,
+                        text: "The scene presents a vibrant coral reef teeming with life. A large, diverse reef formation dominates the view with a smaller reef structure to its right. Numerous colorful fish, likely feeding or interacting, dart around the structure and groups of fish swim above the reed. A sandy seafloor and the vast blue water form the background. A healthy coral reef teems with life, including schools of colorful fish and coral. Groups of fish swim slowly above the reef in the bright blue ocean, the reef is upon a sandy seafloor with a smaller coral sructure to its right."
+                    }
+                ],
+                [
+                    {
+                        start: 0,
+                        end: 7,
+                        text: "A serene aquatic environment with a sandy seafloor. There are coral reefs scattered on the seafloor and in the centre features a small reef structure with a hole in the middle. A few fish swim in the distance. The clear, blue water creates a beautiful backdrop."
+                    },
+                    {
+                        start: 7,
+                        end: 11,
+                        text: "The initial frames depict a tranquil marine scene. A reef on the left-hand side is featured alongside a few smaller reefs sparsely covering the sea floor. Fish are scattered across the sandy seafloor, and a white-coloured fish engages in foraging behaviour. A brown-coloured object in the centre appears to be floating through the water."
+                    },
+                    {
+                        start: 11,
+                        end: 20,
+                        text: "A small dark-coloured fish appears to be foraging on the sandy seafloor, and a larger fish is swimming through the blue. Scattered coral reefs can be seen, but the seabed is mostly sand. A diver is visible swimming away in the background with a trail of bubbles leading to the surface, and a brown object is floating through the sunlit waters."
+                    },
+                    {
+                        start: 20,
+                        end: 30,
+                        text: "The initial frames feature divers exploring a sandy sea floor dotted with coral formations. Two divers float above the seafloor together whilst another diver is swimming off towards a larger coral reef structure. The two divers are slowly moving, likely exploring the area. The clear, blue background suggests good visibility in the water."
+                    }
+                ],
+                [
+                    {
+                        start: 0,
+                        end: 32,
+                        text: "The video presents a structured, sunken metal frame, with 2 levels, heavily encrusted with marine life like corals, fan shaped corals and sponges. Fish of various species dart around the structure, possibly seeking shelter or feeding on the organisms. At the foot of the structure some old car tires can be seen. The background is a deep blue ocean, and the sea floor is visible, adding to the marine environment's allure. A large structured, sunken metal frame, with 2 levels, heavily encrusted with marine life like corals, fan shaped corals and sponges dominates the scene, attracting small fish darting between its beams. Fish appear to be feeding and exploring the nooks while corals and sponges grow along the metal, creating a thriving artificial reef. ON th efoot of the structure some car tires are lying on the ocean floor. The sea floor consists of sand and rocks scattered around the base, with occasional aquatic plants attached to the structure. Background: murky blue water, diffused light, sparse aquatic plants, no divers visible. The image shows a structured, sunken metal frame, with 2 levels, heavily encrusted with marine life like corals, fan shaped corals and sponges with a blue background. The structure is covered in coral and sponges, and there are schools of fish swimming around and through it.."
+                    }
+                ]
+            ];
+
+            let currentIndex = 0;
+
+            function updateSlider() {
+                const offset = -currentIndex * 100;
+                slides.style.transform = `translateX(${offset}%)`;
+
+                // Clear existing subtitles
+                subtitleContainer.innerHTML = '';
+
+                // Add subtitles for the current video
+                const currentVideo = slide[currentIndex].querySelector('video');
+                const currentSubtitles = subtitles[currentIndex];
+
+                currentVideo.addEventListener('timeupdate', () => {
+                    const currentTime = currentVideo.currentTime;
+                    const currentSubtitle = currentSubtitles.find(sub => currentTime >= sub.start && currentTime <= sub.end);
+                    subtitleContainer.textContent = currentSubtitle ? currentSubtitle.text : '';
+                });
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slide.length; // Loop to the first slide
+                updateSlider();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slide.length) % slide.length; // Loop to the last slide
+                updateSlider();
+            });
+
+            // Initialize the first subtitles
+            updateSlider();
+        </script>
+
+
+    </div>
+</div>
+</body>
+</html>
