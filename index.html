@@ -257,12 +257,12 @@
             transform: scale(1.05);
         }
 
-         .custom-button.disabled {
-        background-color: #ccc;
-        color: #666;
-        pointer-events: none; /* Disable click events */
-        cursor: not-allowed;
-        box-shadow: none;
+        .custom-button.disabled {
+            background-color: #ccc;
+            color: #666;
+            pointer-events: none; /* Disable click events */
+            cursor: not-allowed;
+            box-shadow: none;
         }
     </style>
 
@@ -304,13 +304,135 @@
             <p class="caption">Overview of the MSC dataset</p>
         </div>
         <div class="image-section">
-            <img src="MSC_files/MSC_Distribution.png" alt="MSC Distributions"/>
-            <p class="caption">(a) The number of instances per category. (b) The average area of category. (c)
-                Distribution of the number
-                of instances by regions in the MSC dataset</p>
-        </div>
-    </div>
+            <div class="figure">
+                <div class="subfigure">
+                    <canvas id="objectCounts"></canvas>
+                    <div class="caption">(a)</div>
+                </div>
+                <div class="subfigure">
+                    <canvas id="averageAreas"></canvas>
+                    <div class="caption">(b)</div>
+                </div>
+                <div class="subfigure">
+                    <canvas id="regionDistribution"></canvas>
+                    <div class="caption">(c)</div>
+                </div>
+            </div>
 
+            <div class="caption">Dataset. (a) The number of instances per category. (b) The average area of category.
+                (c) Distribution of the number of instances by regions in the dataset.
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const ctx1 = document.getElementById('objectCounts').getContext('2d');
+                const objectCountsChart = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sea floor', 'Reefs', 'Fish', 'Wrecks', 'Divers', 'Plants'],
+                        datasets: [{
+                            label: 'Object count by category',
+                            data: [6709, 2300, 2602, 232, 265, 151],
+                            backgroundColor: 'rgba(255, 192, 203, 0.6)',
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Object count by category'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const ctx2 = document.getElementById('averageAreas').getContext('2d');
+                const averageAreasChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sea floor', 'Reefs', 'Fish', 'Wrecks', 'Divers', 'Plants'],
+                        datasets: [{
+                            label: 'Average Area by Category (#pixels)',
+                            data: [478387, 1081263, 55430, 820193, 92684, 760952],
+                            backgroundColor: 'rgba(0, 128, 128, 0.6)',
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Average Area by Category (#pixels)'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const ctx3 = document.getElementById('regionDistribution').getContext('2d');
+                const regionDistributionChart = new Chart(ctx3, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Tulamben', 'Dublin', 'TelAviv', 'BigIsland', 'Lajolle', 'WestPalm', 'Egypt', 'HongKong'],
+                        datasets: [
+                            {
+                                label: 'Sea floor',
+                                data: [0.6747, 0.2258, 0.1758, 0.2487, 0.1314, 0.2282, 0, 0.2152],
+                                backgroundColor: 'rgba(0, 0, 255, 0.4)',
+                            },
+                            {
+                                label: 'Reefs',
+                                data: [0.1282, 0.5596, 0.2454, 0.6632, 0.2857, 0.3693, 0.625, 0.6329],
+                                backgroundColor: 'rgba(255, 0, 0, 0.4)',
+                            },
+                            {
+                                label: 'Fish',
+                                data: [0.1712, 0.1717, 0.4014, 0.0259, 0.5543, 0.2822, 0, 0.1519],
+                                backgroundColor: 'rgba(0, 255, 0, 0.4)',
+                            },
+                            {
+                                label: 'Wrecks',
+                                data: [0.0037, 0, 0.0958, 0, 0, 0.0664, 0, 0],
+                                backgroundColor: 'rgba(255, 165, 0, 0.4)',
+                            },
+                            {
+                                label: 'Human divers',
+                                data: [0.0121, 0.0350, 0.0597, 0.0104, 0.0286, 0.0539, 0, 0],
+                                backgroundColor: 'rgba(128, 0, 128, 0.4)',
+                            },
+                            {
+                                label: 'Aquatic plants',
+                                data: [0.0101, 0.0079, 0.0220, 0.0518, 0, 0, 0.375, 0],
+                                backgroundColor: 'rgba(165, 42, 42, 0.4)',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                stacked: true,
+                                title: {
+                                    display: true,
+                                    text: 'Proportion'
+                                }
+                            },
+                            y: {
+                                stacked: true,
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+
+
+    </div>
 
     <div class="project">
         <h2>Clip-level Captioning</h2>
@@ -385,19 +507,7 @@
                 transform: translateY(-50%);
             }
 
-            .nav-button {
-                background-color: rgba(0, 0, 0, 0.5);
-                color: #fff;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-                border-radius: 5px;
-                font-size: 1rem;
-            }
-
-            .nav-button:hover {
-                background-color: rgba(0, 0, 0, 0.7);
-            }
+            nav-button
         </style>
 
         <!-- Add this JavaScript before the closing </body> tag -->
@@ -547,9 +657,45 @@
             // Initialize the first subtitles
             updateSlider();
         </script>
-
-
     </div>
+
+    <section id="BibTeX">
+        <h2 class="title" style="text-align:center;">Citation</h2>
+        <div class="citation-box">
+            <code id="bibtex-code">@article{truong2025msc,
+                title={MSC: A Marine Wildlife Video Dataset with Grounded Segmentation and Clip-Level Captioning},
+                author={Truong, Quang-Trung and Wong, Yuk-Kwan and Dang, Vo Hoang Kim Tuyen and Gotama, Rinaldi and
+                Nguyen, Duc Thanh and Yeung, Sai-Kit},
+                journal={arXiv preprint arXiv:2508.04549},
+                year={2025}}
+
+            </code>
+        </div>
+    </section>
+
+    <style>
+        .citation-box {
+            background: #e0e0e0;
+            color: #333;
+            padding: 32px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(34, 40, 49, 0.18);
+            margin: 32px auto;
+            max-width: 80%;
+            width: 80%;
+            font-size: 1.15rem;
+            /* border: 1.5px solid #2575fc; */ /* Remove or comment out this line */
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .citation-box code {
+            color: #333;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            font-size: 1em;
+            background: none;
+        }
+    </style>
 </div>
 </body>
 </html>
