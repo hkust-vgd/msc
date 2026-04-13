@@ -223,7 +223,7 @@
         <a href="link-to-code" class="custom-button disabled" tabindex="-1" aria-disabled="true">
             <i class="fas fa-code"></i> Code
         </a>
-        <a href="link-to-code" class="custom-button disabled" tabindex="-1" aria-disabled="true">
+        <a href="#dataset_download" class="custom-button" tabindex="-1" aria-disabled="true">
             <i class="fas fa-database"></i> Dataset
         </a>
     </div>
@@ -268,6 +268,54 @@
         }
     </style>
 
+
+    <div class="project">
+    <h2>News</h2>
+    <div class="news-list-aligned">
+        <div class="news-item-aligned">
+            <span class="news-date-aligned"><i class="fas fa-calendar-alt"></i> 13 April, 2026</span>
+            <span class="news-desc-aligned"><i class="fas fa-microphone"></i> A small set of MSC released.</span>
+        </div>
+    </div>
+    <style>
+        .news-list-aligned {
+            max-width: 80%;
+            margin: 0 auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .news-item-aligned {
+            display: flex;
+            align-items: flex-start;
+            background: #f5f7fa;
+            border-radius: 8px;
+            border: 1px solid #e0e7ef;
+            padding: 10px 18px;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.05);
+        }
+        .news-date-aligned {
+            min-width: 140px;
+            font-weight: bold;
+            color: #2575fc;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+        }
+        .news-desc-aligned {
+            margin-left: 16px;
+            color: #2c3e50;
+            font-size: 1rem;
+            text-align: justify;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</div>
+
+
     <!-- Project 1 -->
     <div class="project">
         <h2>Abstract</h2>
@@ -281,17 +329,6 @@
             visual grounding and captioning, leading to improved marine video understanding and analysis, and marine
             video generation. Additionally, we highlight the effectiveness of video splitting in order to detect salient
             object transitions in scene changes, which significantly enrich the semantics of captioning content.
-        </p>
-    </div>
-
-    <div class="project">
-        <h2>Dataset</h2>
-        <p style="text-align: center">
-            We sampled 10 videos from the MSC dataset. Readers can download this subset of the dataset via this
-            <a
-                    href="https://hkust-vgd.nas.ust.hk:5001/sharing/fzBY0xgmB"
-            >link</a
-            >.
         </p>
     </div>
 
@@ -661,17 +698,29 @@
         </script>
     </div>
 
+
+    <div class="project" id="dataset_download">
+        <h2>Dataset</h2>
+        <p style="text-align: center">
+            If you would like to download the Marine Wildlife Video dataset, please fill out an agreement to the <a
+                target="_blank" href="https://forms.gle/v613CoQ6RadoMAkz5">"MSC Marine Wildlife Video Dataset Terms of
+            Use"</a> to
+            get the download link.
+        </p>
+    </div>
+
+
     <section id="BibTeX">
         <h2 class="title" style="text-align:center;">Citation</h2>
         <div class="citation-box">
             <code id="bibtex-code">
                 @article{truong2025msc,
-                title       = {MSC: A Marine Wildlife Video Dataset with Grounded Segmentation and Clip-Level Captioning},
-                author      = {Truong, Quang-Trung and Wong, Yuk-Kwan and Dang, Vo Hoang Kim Tuyen and Gotama, Rinaldi and
-                                Nguyen, Duc Thanh and Yeung, Sai-Kit},
-                journal     = {arXiv preprint arXiv:2508.04549},
-                year        = {2025}
-                        }
+                title = {MSC: A Marine Wildlife Video Dataset with Grounded Segmentation and Clip-Level Captioning},
+                author = {Truong, Quang-Trung and Wong, Yuk-Kwan and Dang, Vo Hoang Kim Tuyen and Gotama, Rinaldi and
+                Nguyen, Duc Thanh and Yeung, Sai-Kit},
+                journal = {arXiv preprint arXiv:2508.04549},
+                year = {2025}
+                }
             </code>
 
             <style>
@@ -680,6 +729,7 @@
                     font-family: 'Fira Mono', 'Consolas', monospace; /* Use a monospace font */
                     font-size: 1em;
                 }
+
                 .citation-box {
                     background: #e0e0e0;
                     color: #333;
